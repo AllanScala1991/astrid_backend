@@ -6,12 +6,19 @@ import "dotenv/config"
 const app: Application = express()
 const port: number = parseInt(`${process.env.PORT}`) || 8000
 
-var corsOptions = {
-    origin: ['http://localhost:3000'],
-    credentials: true,
-    methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'] 
+const whitelist = ["http://localhost:3000"]
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
+  credentials: true,
 }
 app.use(cors(corsOptions))
+
 app.use(body.json())
 app.use(body.urlencoded({extended: false}))
 
