@@ -17,6 +17,23 @@ app.use(require("./routes/board"))
 app.use(require("./routes/stage"))
 app.use(require("./routes/task"))
 
+//CORS
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested, Content-Type, Accept Authorization"
+    )
+    if (req.method === "OPTIONS") {
+      res.header(
+        "Access-Control-Allow-Methods",
+        "POST, PUT, PATCH, GET, DELETE"
+      )
+      return res.status(200).json({})
+    }
+    next()
+})
+
 app.listen(port, () => {
     return console.log("Server is running")
 })
