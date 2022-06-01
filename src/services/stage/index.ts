@@ -23,8 +23,11 @@ export class Stage implements IStage {
     async findByBoardId(boardId: string): Promise<IStageResponse> {
         try {
             const stages = await prisma.stages.findMany({
+                orderBy: {
+                    createdAt: 'asc'
+                },
                 where: {
-                    boardId: boardId
+                    boardId: boardId,
                 }
             })
 

@@ -32,6 +32,7 @@ model Stages {
   boardId String
   board   Board   @relation(fields: [boardId], references: [id])
   tasks   Tasks[]
+  createdAt   DateTime @default(now())
 }
 
 model Tasks {

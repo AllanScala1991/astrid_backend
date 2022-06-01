@@ -6,7 +6,7 @@ import "dotenv/config"
 const app: Application = express()
 const port: number = parseInt(`${process.env.PORT}`) || 8000
 
-const whitelist = ["https://astridapp.netlify.app"]
+const whitelist = ["https://astridapp.netlify.app", process.env.LOCALHOST]
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
