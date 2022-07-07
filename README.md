@@ -1,7 +1,4 @@
 # ASTRID API
-
-[![GitHub release](https://img.shields.io/github/release/rare-technologies/gensim.svg?maxAge=3600)](https://github.com/AllanScala1991/astrid_backend/releases)
-
 ## Como rodar o projeto localmente
 Clonar o projeto
 
