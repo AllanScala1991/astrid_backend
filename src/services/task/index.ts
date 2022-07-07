@@ -15,10 +15,10 @@ export class Task implements ITask {
                 }
             })
 
-            return {status: true, message: "Task criada com sucesso."}
+            return {status: true, message: "Tarefa criada com sucesso.", statusCode: 201}
 
         } catch (error) {
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -30,10 +30,10 @@ export class Task implements ITask {
                 }
             })
 
-            return {status: true, data: tasks}
+            return {status: true, data: tasks, statusCode: 200}
 
         } catch (error) {
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -45,10 +45,10 @@ export class Task implements ITask {
                 }
             })
 
-            return {status: true, data: tasks}
+            return {status: true, data: tasks, statusCode: 200}
 
         } catch (error) {
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -68,10 +68,10 @@ export class Task implements ITask {
                 
             })
 
-            return {status: true, message: "Task atualizada com sucesso."}
+            return {status: true, message: "Tarefa atualizada com sucesso.", statusCode: 200}
 
         } catch (error) {
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -83,10 +83,10 @@ export class Task implements ITask {
                 }
             })
 
-            return {status: true, message: "Task deletada com sucesso."}
+            return {status: true, message: "Tarefa deletada com sucesso.", statusCode: 200}
 
         } catch (error) {
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -98,10 +98,10 @@ export class Task implements ITask {
                 }
             })
 
-            return {status: true, message: "Task deletada com sucesso."}
+            return {status: true, message: "Tarefa deletada com sucesso.", statusCode: 200}
 
         } catch (error) {
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
     

@@ -9,7 +9,7 @@ app.post("/create/board", auth, async (req: Request, res: Response) => {
 
     const createBoard = await new BoardController().create(name, userId)
 
-    res.send(createBoard)
+    res.send(createBoard).status(createBoard.statusCode)
 })
 
 app.get("/find/board/:userId", auth, async (req: Request, res: Response) => {
@@ -17,7 +17,7 @@ app.get("/find/board/:userId", auth, async (req: Request, res: Response) => {
 
     const findBoards = await new BoardController().findByUserID(userId)
 
-    res.send(findBoards)
+    res.send(findBoards).status(findBoards.statusCode)
 })
 
 app.get("/find/board/name/:name/:userId", auth, async (req: Request, res: Response) => {
@@ -26,7 +26,7 @@ app.get("/find/board/name/:name/:userId", auth, async (req: Request, res: Respon
 
     const findBoards = await new BoardController().findByName(name, userId)
 
-    res.send(findBoards)
+    res.send(findBoards).status(findBoards.statusCode)
 })
 
 app.put("/update/board", auth, async (req: Request, res: Response) => {
@@ -34,7 +34,7 @@ app.put("/update/board", auth, async (req: Request, res: Response) => {
 
     const updateBoard = await new BoardController().update(boardId, name)
 
-    res.send(updateBoard)
+    res.send(updateBoard).status(updateBoard.statusCode)
 })
 
 app.delete("/delete/board/:boardId", auth, async (req: Request, res: Response) => {
@@ -42,7 +42,7 @@ app.delete("/delete/board/:boardId", auth, async (req: Request, res: Response) =
 
     const deleteBoard = await new BoardController().delete(boardId)
 
-    res.send(deleteBoard)
+    res.send(deleteBoard).status(deleteBoard.statusCode)
 })
 
 module.exports = app

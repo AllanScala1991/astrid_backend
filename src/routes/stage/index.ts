@@ -9,7 +9,7 @@ app.post("/create/stage", auth, async (req: Request, res: Response) => {
 
     const createStage = await new StageController().create(name, boardId)
 
-    res.send(createStage)
+    res.send(createStage).status(createStage.statusCode)
 })
 
 app.get("/find/stage/:boardId", auth, async (req: Request, res: Response) => {
@@ -17,7 +17,7 @@ app.get("/find/stage/:boardId", auth, async (req: Request, res: Response) => {
 
     const findStages = await new StageController().findByBoardId(boardId)
 
-    res.send(findStages)
+    res.send(findStages).status(findStages.statusCode)
 })
 
 app.put("/update/stage", auth, async (req: Request, res: Response) => {
@@ -25,7 +25,7 @@ app.put("/update/stage", auth, async (req: Request, res: Response) => {
 
     const updateStage = await new StageController().update(stageId, name)
 
-    res.send(updateStage)
+    res.send(updateStage).status(updateStage.statusCode)
 })
 
 app.delete("/delete/stage/:stageId", auth, async (req: Request, res: Response) => {
@@ -33,7 +33,7 @@ app.delete("/delete/stage/:stageId", auth, async (req: Request, res: Response) =
 
     const deleteStage = await new StageController().delete(stageId)
 
-    res.send(deleteStage)
+    res.send(deleteStage).status(deleteStage.statusCode)
 })
 
 app.delete("/delete/stage/board/:boardId", auth, async (req: Request, res: Response) => {
@@ -41,7 +41,7 @@ app.delete("/delete/stage/board/:boardId", auth, async (req: Request, res: Respo
 
     const deleteStage = await new StageController().deleteByBoardId(boardId)
 
-    res.send(deleteStage)
+    res.send(deleteStage).status(deleteStage.statusCode)
 })
 
 module.exports = app

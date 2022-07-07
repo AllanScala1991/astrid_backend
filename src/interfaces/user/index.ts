@@ -21,6 +21,7 @@ export interface ICreateUser {
 export interface IUserResponse {
     status: boolean
     message: string | unknown
+    statusCode: number
 }
 
 
@@ -28,4 +29,5 @@ export interface IUserFindResponse {
     status: boolean
     data?: ICreateUser | null
     message?: string | unknown
+    statusCode: number
 }

@@ -13,10 +13,10 @@ export class Stage implements IStage {
                 }
             })
 
-            return {status: true, message: "Stage criado com sucesso."}
+            return {status: true, message: "Quadro criado com sucesso.", statusCode: 201}
 
         } catch (error) {
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -31,10 +31,10 @@ export class Stage implements IStage {
                 }
             })
 
-            return {status: true, data: stages}
+            return {status: true, data: stages, statusCode: 200}
             
         } catch (error) {
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -49,10 +49,10 @@ export class Stage implements IStage {
                 }
             })
 
-            return {status: true, message: "Stage atualizado com sucesso."}
+            return {status: true, message: "Quadro atualizado com sucesso.", statusCode: 200}
 
         } catch (error) {
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -64,10 +64,10 @@ export class Stage implements IStage {
                 }
             })
 
-            return {status: true, message: "Stage deletado com sucesso."}
+            return {status: true, message: "Quadro deletado com sucesso.", statusCode: 200}
 
         } catch (error) {
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -79,10 +79,10 @@ export class Stage implements IStage {
                 }
             })
 
-            return {status: true, message: "Stage deletado com sucesso."}
+            return {status: true, message: "Quadro deletado com sucesso.", statusCode: 200}
 
         } catch (error) {
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
     

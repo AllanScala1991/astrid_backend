@@ -13,11 +13,11 @@ export class Board implements IBoard {
                 }
             })
 
-            return {status: true, message: "Board criado com sucesso."}
+            return {status: true, message: "Board criado com sucesso.", statusCode: 201}
 
         } catch (error) {
             console.log(error)
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -29,11 +29,11 @@ export class Board implements IBoard {
                 }
             })
 
-            return {status: true, data: data}
+            return {status: true, data: data, statusCode: 200}
 
         } catch (error) {
             console.log(error)
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -48,11 +48,11 @@ export class Board implements IBoard {
                 }
             })
 
-            return {status: true, data: data}
+            return {status: true, data: data, statusCode: 200}
 
         } catch (error) {
             console.log(error)
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -67,11 +67,11 @@ export class Board implements IBoard {
                 }
             })
 
-            return {status: true, message: "Board atualizado com sucesso."}
+            return {status: true, message: "Board atualizado com sucesso.", statusCode: 200}
 
         } catch (error) {
             console.log(error)
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -83,10 +83,10 @@ export class Board implements IBoard {
                 }
             })
 
-            return {status: true, message: "Board deletado com sucesso."}
+            return {status: true, message: "Board deletado com sucesso.", statusCode: 200}
         } catch (error) {
             console.log(error)
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
     

@@ -10,4 +10,5 @@ export interface IStageResponse {
     status: boolean
     message?: string
     data?: {}
+    statusCode: number
 }

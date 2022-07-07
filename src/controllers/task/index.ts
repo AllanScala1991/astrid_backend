@@ -8,7 +8,7 @@ export class TaskController implements ITask {
     ){}
 
     async create(task: IRegisterTask): Promise<ITaskResponse> {
-        if(!task.name || !task.stageId) return {status: false, message: "Campos obrigatórios devem ser preenchidos."}
+        if(!task.name || !task.stageId) return {status: false, message: "Campos obrigatórios devem ser preenchidos.", statusCode: 400}
 
         if(!task.description) task.description = ""
 
@@ -20,13 +20,13 @@ export class TaskController implements ITask {
     }
 
     async findByStageId(stageId: string): Promise<ITaskResponse> {
-        if(!stageId) return {status: false, message: "Stage ID inválido."}
+        if(!stageId) return {status: false, message: "ID do quadro inválido.", statusCode: 400}
 
         return await this.task.findByStageId(stageId)
     }
 
     async findByTaskId(taskId: string): Promise<ITaskResponse> {
-        if(!taskId) return {status: false, message: "Task ID inválido."}
+        if(!taskId) return {status: false, message: "ID da tarefa inválido.", statusCode: 400}
 
         return await this.task.findByTaskId(taskId)
     }
@@ -36,13 +36,13 @@ export class TaskController implements ITask {
     }
 
     async delete(taskId: string): Promise<ITaskResponse> {
-        if(!taskId) return {status: false, message: "Task ID inválido."}
+        if(!taskId) return {status: false, message: "ID da tarefa inválido.", statusCode: 400}
 
         return await this.task.delete(taskId)
     }
 
     async deleteByStageId(stageId: string): Promise<ITaskResponse> {
-        if(!stageId) return {status: false, message: "Stage ID inválido."}
+        if(!stageId) return {status: false, message: "ID do quadro inválido.", statusCode: 400}
 
         return await this.task.deleteByStageId(stageId)
     }

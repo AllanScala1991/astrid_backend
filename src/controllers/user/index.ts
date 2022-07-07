@@ -15,7 +15,7 @@ export class UserController implements IUser {
 
     async create(user: ICreateUser): Promise<IUserResponse> {
         if (!user.name || !user.email || !user.password) {
-            return {status: false, message: "Todos os campos devem ser preenchidos."}
+            return {status: false, message: "Todos os campos devem ser preenchidos.", statusCode: 400}
         }
 
         const isValid = await this.email.isValid(user.email)
@@ -25,7 +25,7 @@ export class UserController implements IUser {
         const emailExists = await this.user.findOneByEmail(user.email)
 
         if(!emailExists.status) {
-            return {status: emailExists.status, message: emailExists.message}
+            return {status: emailExists.status, message: emailExists.message, statusCode: emailExists.statusCode}
         }
 
         const hashPassword = await this.encrypter.hash(user.password, 8)
@@ -36,7 +36,7 @@ export class UserController implements IUser {
     }
 
     async findOneById(id: string): Promise<IUserFindResponse> {
-        if(!id) return {status: false, message: "ID inválido"}
+        if(!id) return {status: false, message: "ID inválido", statusCode: 400}
 
         return await this.user.findOneById(id)
 
@@ -47,13 +47,13 @@ export class UserController implements IUser {
     }
 
     async update(user: { name: string; email: string; id: string; }): Promise<IUserResponse> {
-        if(!user.name || !user.email || !user.id) return {status: false, message: "Todos os campos devem ser preenchidos."}
+        if(!user.name || !user.email || !user.id) return {status: false, message: "Todos os campos devem ser preenchidos.", statusCode: 400}
 
         return await this.user.update(user)
     }
 
     async delete(id: string): Promise<IUserResponse> {
-        if(!id) return {status: false, message: "ID inválido."}
+        if(!id) return {status: false, message: "ID inválido.", statusCode: 400}
 
         return await this.user.delete(id)
     }
