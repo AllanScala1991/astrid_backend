@@ -10,7 +10,7 @@ app.post("/user/create", async (req: Request, res: Response) => {
 
     const createUser = await user.create({name, email, password})
 
-    res.send(createUser)
+    res.send(createUser).status(createUser.statusCode)
 })
 
 //GET ONE USER BY ID
@@ -19,7 +19,7 @@ app.get("/user/find/:id", async (req: Request, res: Response) => {
 
     const findUser = await user.findOneById(id)
 
-    res.send(findUser)
+    res.send(findUser).status(findUser.statusCode)
 })
 
 //UPDATE USER
@@ -28,7 +28,7 @@ app.put("/user/update", async (req: Request, res: Response) => {
 
     const updateUser = await user.update({name, email, id})
 
-    res.send(updateUser)
+    res.send(updateUser).status(updateUser.statusCode)
 })
 
 //DELETE USER
@@ -37,7 +37,7 @@ app.delete("/user/delete/:id", async (req: Request, res: Response) => {
 
     const deleteUser = await user.delete(id)
 
-    res.send(deleteUser)
+    res.send(deleteUser).status(deleteUser.statusCode)
 })
 
 module.exports = app

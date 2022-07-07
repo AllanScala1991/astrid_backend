@@ -8,7 +8,7 @@ app.post("/login", async (req: Request, res: Response) => {
 
     const login = await new LoginController().login(email, password)
 
-    res.send(login)
+    res.send(login).status(login.statusCode)
 })
 
 

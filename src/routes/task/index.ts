@@ -9,7 +9,7 @@ app.post("/create/task", auth, async (req: Request, res: Response) => {
 
     const createTask = await new TaskController().create({name, stageId, description, urgency})
 
-    return res.send(createTask)
+    return res.send(createTask).status(createTask.statusCode)
 })
 
 app.get("/find/task/stage/:stageId", auth, async (req: Request, res: Response) => {
@@ -17,7 +17,7 @@ app.get("/find/task/stage/:stageId", auth, async (req: Request, res: Response) =
 
     const findByStageId = await new TaskController().findByStageId(stageId)
 
-    return res.send(findByStageId)
+    return res.send(findByStageId).status(findByStageId.statusCode)
 })
 
 app.get("/find/task/:taskId", auth, async (req: Request, res: Response) => {
@@ -25,7 +25,7 @@ app.get("/find/task/:taskId", auth, async (req: Request, res: Response) => {
 
     const findByTaskId = await new TaskController().findByTaskId(taskId)
 
-    return res.send(findByTaskId)
+    return res.send(findByTaskId).status(findByTaskId.statusCode)
 })
 
 app.put("/update/task", auth, async (req: Request, res: Response) => {
@@ -33,7 +33,7 @@ app.put("/update/task", auth, async (req: Request, res: Response) => {
 
     const updateTask = await new TaskController().update(name, description, urgency, taskId, currentStage)
 
-    res.send(updateTask)
+    res.send(updateTask).status(updateTask.statusCode)
 })
 
 app.delete("/delete/task/:taskId", auth, async (req: Request, res: Response) => {
@@ -41,7 +41,7 @@ app.delete("/delete/task/:taskId", auth, async (req: Request, res: Response) => 
 
     const deleteTask = await new TaskController().delete(taskId)
 
-    res.send(deleteTask)
+    res.send(deleteTask).status(deleteTask.statusCode)
 })
 
 app.delete("/delete/task/stage/:stageId", auth, async (req: Request, res: Response) => {
@@ -49,7 +49,7 @@ app.delete("/delete/task/stage/:stageId", auth, async (req: Request, res: Respon
 
     const deleteTask = await new TaskController().deleteByStageId(stageId)
 
-    res.send(deleteTask)
+    res.send(deleteTask).status(deleteTask.statusCode)
 })
 
 module.exports = app;

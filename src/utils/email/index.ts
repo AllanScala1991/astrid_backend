@@ -10,13 +10,13 @@ export class Email implements IEmail {
         try {
             const verifyEmail = await validate(email)
 
-            if(!verifyEmail) return {status: false, message: "Email inválido."}
+            if(!verifyEmail) return {status: false, message: "Email inválido.", statusCode: 400}
 
-            return {status: true, message: "Email válido."}
+            return {status: true, message: "Email válido.", statusCode: 200}
 
         } catch (error) {   
             console.log(error)
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
 
@@ -25,7 +25,7 @@ export class Email implements IEmail {
             const isValidFrom = await this.isValid(from)
             const isValidTo = await this.isValid(to)
 
-            if(!isValidFrom.status || !isValidTo.status) return {status: false, message: "Email inválido."}
+            if(!isValidFrom.status || !isValidTo.status) return {status: false, message: "Email inválido.", statusCode: 400}
 
             let transporter = createTransport({
                 host: "smtp.ethereal.email",
@@ -44,11 +44,11 @@ export class Email implements IEmail {
                 text: text
             })
 
-            return {status: true, message: "Email enviado com sucesso."}
+            return {status: true, message: "Email enviado com sucesso.", statusCode: 200}
 
         } catch (error) {
             console.log(error)
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
     

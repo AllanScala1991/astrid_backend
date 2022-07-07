@@ -21,18 +21,18 @@ export class Login implements ILogin {
             if(userExists.data) {
                 const loginIsValid = await this.encrypter.compare(password, userExists.data.password)
 
-                if(!loginIsValid) return {status: false, message: "Usuário ou Senha incorretos."}
+                if(!loginIsValid) return {status: false, message: "Usuário ou Senha incorretos.", statusCode: 400}
                 
                 const token = this.authentication.generateAuth(userExists.data.name, userExists.data.email, userExists.data.id as string) 
                 
-                return {status: true, token: token}
+                return {status: true, token: token, statusCode: 200}
             }
 
-            return {status: false, message: "Usuário e ou Senha incorretos."}
+            return {status: false, message: "Usuário e ou Senha incorretos.", statusCode: 400}
 
         } catch (error) {
 
-            return {status: false, message: error}
+            return {status: false, message: error, statusCode: 500}
         }
     }
     

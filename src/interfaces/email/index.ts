@@ -8,4 +8,5 @@ export interface IEmail {
 export interface IEmailSendResponse {
     status: boolean, 
     message: string | unknown
+    statusCode: number
 }

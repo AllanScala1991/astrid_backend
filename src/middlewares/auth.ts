@@ -6,7 +6,7 @@ const app  = Router()
 app.use(function(req: Request, res: Response, next: NextFunction) {
     const authorization = req.headers.authorization
 
-    if(!authorization) return res.send({status: false, message: "Usuário não autorizado."})
+    if(!authorization) return res.send({status: false, message: "Usuário não autorizado.", statusCode: 401})
 
     const token = authorization.split(" ")
 
@@ -16,7 +16,7 @@ app.use(function(req: Request, res: Response, next: NextFunction) {
 
     } catch (error) {
         console.log(error)
-        return res.send({status: false, message: "Sua sessão expirou, faça login novamente."})
+        return res.send({status: false, message: "Sua sessão expirou, faça login novamente.", statusCode: 401})
     }
 })
 

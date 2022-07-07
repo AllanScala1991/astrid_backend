@@ -6,4 +6,5 @@ export interface ILoginResponse {
     status: boolean
     message?: string | unknown
     token?: string | undefined
+    statusCode: number
 }

@@ -8,7 +8,7 @@ export class LoginController implements ILogin {
     ){}
 
     async login(email: string, password: string): Promise<ILoginResponse> {
-        if(!email || !password) return {status: false, message: "O email e a senha são obrigatórios."}
+        if(!email || !password) return {status: false, message: "O email e a senha são obrigatórios.", statusCode: 400}
 
         return await this.loginService.login(email, password)
     }

@@ -19,4 +19,5 @@ export interface ITaskResponse {
     status: boolean
     message?: string
     data?: {}
+    statusCode: number
 }

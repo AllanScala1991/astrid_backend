@@ -9,19 +9,19 @@ export class BoardController implements IBoard {
     ){}
 
     async create(name: string, userId: string): Promise<IBoardResponse> {
-        if(!name || !userId) return {status: false, message: "Todos os campos devem ser preenchidos."}
+        if(!name || !userId) return {status: false, message: "Todos os campos devem ser preenchidos.", statusCode: 400}
 
         return await this.board.create(name, userId)
     }
 
     async findByUserID(userId: string): Promise<IBoardResponse> {
-        if(!userId) return {status: false, message: "Todos os campos devem ser preenchidos."}
+        if(!userId) return {status: false, message: "Todos os campos devem ser preenchidos.", statusCode: 400}
 
         return await this.board.findByUserID(userId)
     }
 
     async findByName(name: string, userId: string): Promise<IBoardResponse> {
-        if(!userId || !name) return {status: false, message: "Todos os campos devem ser preenchidos."}
+        if(!userId || !name) return {status: false, message: "Todos os campos devem ser preenchidos.", statusCode: 400}
 
         if(name == "all") return await this.board.findByUserID(userId)
 
@@ -29,13 +29,13 @@ export class BoardController implements IBoard {
     }
 
     async update(boardId: string, name: string): Promise<IBoardResponse> {
-        if(!boardId || !name) return {status: false, message: "Todos os campos devem ser preenchidos."}
+        if(!boardId || !name) return {status: false, message: "Todos os campos devem ser preenchidos.", statusCode: 400}
 
         return await this.board.update(boardId, name)
     }
 
     async delete(boardId: string): Promise<IBoardResponse> {
-        if(!boardId) return {status: false, message: "Todos os campos devem ser preenchidos."}
+        if(!boardId) return {status: false, message: "Todos os campos devem ser preenchidos.", statusCode: 400}
 
         return await this.board.delete(boardId)
     }

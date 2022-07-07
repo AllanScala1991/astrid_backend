@@ -11,7 +11,8 @@ export interface IBoard {
 }
 
 export interface IBoardResponse {
-    status: boolean,
+    status: boolean
     message?: string | unknown
     data?: {} | undefined
+    statusCode: number
 }
