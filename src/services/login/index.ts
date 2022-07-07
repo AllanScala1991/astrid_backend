@@ -28,7 +28,7 @@ export class Login implements ILogin {
                 return {status: true, token: token}
             }
 
-            return {status: false, message: "Usuário ou Senha incorretos."}
+            return {status: false, message: "Usuário e ou Senha incorretos."}
 
         } catch (error) {
 

@@ -13,7 +13,7 @@ export class Stage implements IStage {
                 }
             })
 
-            return {status: true, message: "Stage criado com sucesso."}
+            return {status: true, message: "Quadro criado com sucesso."}
 
         } catch (error) {
             return {status: false, message: error}
@@ -49,7 +49,7 @@ export class Stage implements IStage {
                 }
             })
 
-            return {status: true, message: "Stage atualizado com sucesso."}
+            return {status: true, message: "Quadro atualizado com sucesso."}
 
         } catch (error) {
             return {status: false, message: error}
@@ -64,7 +64,7 @@ export class Stage implements IStage {
                 }
             })
 
-            return {status: true, message: "Stage deletado com sucesso."}
+            return {status: true, message: "Quadro deletado com sucesso."}
 
         } catch (error) {
             return {status: false, message: error}
@@ -79,7 +79,7 @@ export class Stage implements IStage {
                 }
             })
 
-            return {status: true, message: "Stage deletado com sucesso."}
+            return {status: true, message: "Quadro deletado com sucesso."}
 
         } catch (error) {
             return {status: false, message: error}

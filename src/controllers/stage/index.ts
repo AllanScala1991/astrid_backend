@@ -27,13 +27,13 @@ export class StageController implements IStage {
     }
 
     async delete(stageId: string): Promise<IStageResponse> {
-        if(!stageId) return {status: false, message: "ID do stage inválido."}
+        if(!stageId) return {status: false, message: "ID do quadro inválido."}
 
         return await this.stage.delete(stageId)
     }
 
     async deleteByBoardId(boardId: string): Promise<IStageResponse> {
-        if(!boardId) return {status: false, message: "ID do stage inválido."}
+        if(!boardId) return {status: false, message: "ID do quadro inválido."}
 
         return await this.stage.deleteByBoardId(boardId)
     }

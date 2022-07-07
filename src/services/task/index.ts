@@ -15,7 +15,7 @@ export class Task implements ITask {
                 }
             })
 
-            return {status: true, message: "Task criada com sucesso."}
+            return {status: true, message: "Tarefa criada com sucesso."}
 
         } catch (error) {
             return {status: false, message: error}
@@ -68,7 +68,7 @@ export class Task implements ITask {
                 
             })
 
-            return {status: true, message: "Task atualizada com sucesso."}
+            return {status: true, message: "Tarefa atualizada com sucesso."}
 
         } catch (error) {
             return {status: false, message: error}
@@ -83,7 +83,7 @@ export class Task implements ITask {
                 }
             })
 
-            return {status: true, message: "Task deletada com sucesso."}
+            return {status: true, message: "Tarefa deletada com sucesso."}
 
         } catch (error) {
             return {status: false, message: error}
@@ -98,7 +98,7 @@ export class Task implements ITask {
                 }
             })
 
-            return {status: true, message: "Task deletada com sucesso."}
+            return {status: true, message: "Tarefa deletada com sucesso."}
 
         } catch (error) {
             return {status: false, message: error}
