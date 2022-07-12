@@ -28,6 +28,7 @@ app.use(require("./routes/login"))
 app.use(require("./routes/board"))
 app.use(require("./routes/stage"))
 app.use(require("./routes/task"))
+app.use(require("./routes/recoveryPassword"))
 
 app.listen(port, () => {
     return console.log("Server is running")
