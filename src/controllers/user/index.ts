@@ -52,6 +52,10 @@ export class UserController implements IUser {
         return await this.user.update(user)
     }
 
+    updatePassword(id: string, password: string): Promise<IUserResponse> {
+        throw new Error("Method not implemented.");
+    }
+
     async delete(id: string): Promise<IUserResponse> {
         if(!id) return {status: false, message: "ID inválido.", statusCode: 400}
 

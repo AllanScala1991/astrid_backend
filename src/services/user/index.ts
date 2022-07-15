@@ -77,6 +77,25 @@ export class User implements IUser {
         }
     }
 
+    async updatePassword(id: string, password: string): Promise<IUserResponse> {
+        try {
+            await prisma.user.update({
+                where: {
+                    id: id                
+                },
+                data: {
+                    password: password
+                }
+            })
+
+            return {status: true, message: "Senha atualizada com sucesso.", statusCode: 200}
+            
+        } catch (error) {
+            console.log(error)
+            return {status: false, message: error, statusCode: 500}
+        }
+    }
+
     async delete(id: string): Promise<IUserResponse> {
         try {
 

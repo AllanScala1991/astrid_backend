@@ -7,6 +7,8 @@ export interface IUser {
 
     update(user: {name: string, email: string, id: string}): Promise<IUserResponse>
 
+    updatePassword(id: string, password: string): Promise<IUserResponse>
+
     delete(id: string): Promise<IUserResponse>
 }
 
