@@ -7,8 +7,8 @@ export class RecoveryPassword implements IRecoveryPassword {
         private readonly email: Email = new Email()
     ){}
 
-    async sendPassword(from: string, to: string, subject: string, text: string): Promise<IEmailSendResponse> {
-        return await this.email.sendEmail(from, to, subject, text)
+    async sendPassword(to: string, subject: string, text: string): Promise<IEmailSendResponse> {
+        return await this.email.sendEmail(to, subject, text)
     }
     
 }

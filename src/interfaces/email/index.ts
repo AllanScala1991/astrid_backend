@@ -1,7 +1,7 @@
 export interface IEmail {
     isValid(email: string): Promise<IEmailSendResponse>
 
-    sendEmail(from: string, to: string, subject: string, text: string): Promise<IEmailSendResponse>
+    sendEmail(to: string, subject: string, text: string): Promise<IEmailSendResponse>
 }
 
 

@@ -1,8 +1,7 @@
 import { validate } from "email-validator"
-import { createTransport } from "nodemailer"
-import mg from "nodemailer-mailgun-transport"
 import { IEmail, IEmailSendResponse } from "../../interfaces";
 import "dotenv/config"
+import sgMail, { ClientResponse } from "@sendgrid/mail"
 
 export class Email implements IEmail {
 
@@ -21,36 +20,23 @@ export class Email implements IEmail {
         }
     }
 
-    async sendEmail(from: string, to: string, subject: string, text: string): Promise<IEmailSendResponse> {
+    async sendEmail(to: string, subject: string, text: string): Promise<IEmailSendResponse> {
         try {
-            const isValidFrom = await this.isValid(from)
-            const isValidTo = await this.isValid(to)
+            sgMail.setApiKey(process.env.API_KEY)
 
-            if(!isValidFrom.status || !isValidTo.status) return {status: false, message: "Email inválido.", statusCode: 400}
-
-            const auth = {
-                auth: {
-                  api_key: process.env.MAIL_KEY,
-                  domain: process.env.DOMAIN
-                }
-            }
-
-            const email = createTransport(mg(auth))
-
-            email.sendMail({
-                from: from,
+            const message = {
                 to: to,
+                from: process.env.FROM,
                 subject: subject,
                 text: text
-            }, (err, info) => {
-                if (err) {
-                  console.log(`Error: ${err}`);
-                }
-                else {
-                    return {status: true, message: "Verifique sua caixa de entrada.", statusCode: 200}
-                }
-            });
+            }
 
+            const emailResponse:[ClientResponse, {}] = await sgMail.send(message)
+
+            if(emailResponse[0].statusCode != 202) return {status: false, message: "Erro ao enviar o email, tente novamente.", statusCode: 500}
+
+            return {status: true, message: "Verifique sua caixa de entrada.", statusCode: 200}
+            
         } catch (error) {
             console.log(error)
             return {status: false, message: error, statusCode: 500}

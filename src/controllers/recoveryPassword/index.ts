@@ -13,14 +13,14 @@ export class RecoveryPasswordController{
 
     async sendPassword(to: string): Promise<IEmailSendResponse> {
         if(!to) {
-            return {status: false, message: "Todos os campos devem ser preenchidos.", statusCode: 400}
+            return {status: false, message: "O email deve ser informado.", statusCode: 400}
         }
 
         const emailExists = await this.user.findOneByEmail(to)
 
         if(!emailExists.status) return {status: false, message: emailExists.message, statusCode: emailExists.statusCode}
 
-        return await this.recovery.sendPassword(process.env.FROM, to, "Recuperaçao de Senha", "Sua senha provisória é ...")
+        return await this.recovery.sendPassword(to, "Recuperaçao de Senha", "Sua senha provisória é ...")
     }
     
 }
