@@ -11,6 +11,11 @@ cd astrid_backend
 npm install
 ```
 
+Apos configurar o Docker com o postgres rodar o comando para criar o banco de dados
+```console
+npx prisma migrate dev
+```
+
 Rodar o projeto
 ```console
 npm run dev
@@ -21,4 +26,4 @@ npm run dev
 
 * DATABASE_URL: Endereço do DB PostegreSQL
 * SECRET_TOKEN: token secreto md5
-* LOCALHOST: url do seu localhost
+* LOCALHOST: url do seu localhost do front end
